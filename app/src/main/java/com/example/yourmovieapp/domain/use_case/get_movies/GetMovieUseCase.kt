@@ -23,6 +23,9 @@ class GetMovieUseCase @Inject constructor(private val repository: MovieRepositor
         }catch (_: IOError) {
             emit(Resource.Error("Internet Problem"))
         }
+        catch (e: Exception){
+            emit(Resource.Error(e.message.toString()))
+        }
     }
 
 }

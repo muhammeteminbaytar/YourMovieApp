@@ -7,11 +7,13 @@ import androidx.lifecycle.viewModelScope
 import com.example.yourmovieapp.domain.use_case.get_movies.GetMovieUseCase
 import com.example.yourmovieapp.presentation.movies.views.MoviesEvent
 import com.example.yourmovieapp.util.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
+@HiltViewModel
 class MoviesViewModel @Inject constructor(
     private val getMovieUseCase: GetMovieUseCase
 ) : ViewModel() {

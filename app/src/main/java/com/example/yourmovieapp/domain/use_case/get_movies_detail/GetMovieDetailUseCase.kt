@@ -1,8 +1,6 @@
 package com.example.yourmovieapp.domain.use_case.get_movies_detail
 
-import com.example.yourmovieapp.data.remote.dto.toListMovie
 import com.example.yourmovieapp.data.remote.dto.toMovieDetail
-import com.example.yourmovieapp.domain.model.Movie
 import com.example.yourmovieapp.domain.model.MovieDetail
 import com.example.yourmovieapp.domain.repository.MovieRepository
 import com.example.yourmovieapp.util.Resource
@@ -19,6 +17,8 @@ class GetMovieDetailUseCase @Inject constructor(private val repository: MovieRep
             emit(Resource.Success(movie.toMovieDetail()))
         }catch (_: IOError) {
             emit(Resource.Error("Internet Problem"))
+        }catch (e: Exception) {
+            emit(Resource.Error(e.message.toString()))
         }
     }
 }
